@@ -1,4 +1,3 @@
-
 <template>
   <div>
    
@@ -69,21 +68,23 @@ export default {
 
   methods: {
 
-    remove( foto) {
+    remove(foto) {
       
         if(confirm('Confirma operação?')){
           this.$http
           .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
-          .then(() => this.mensagem = 'Foto removida com sucesso', err => {
+          .then(() => {
+            let indice = this.fotos.indexOf(foto);
+            this.fotos.splice(indice, 1);
+            this.mensagem = 'Foto removida com sucesso'
+          } , err => {
               console.log(err)
               this.mensagem = 'Não foi possivel remover a foto'
+          
 
           });
-
-
-
         }
-      }
+     }
   },
 
   created() {
