@@ -60,8 +60,9 @@ export default {
 
         grava() {
                
-                this.$http.post('http://localhosto:3000/v1/fotos');
-               
+                this.$http 
+                .post('http://localhost:3000/v1/fotos', this.foto)
+                .then(() =>this.foto = new Foto(), err => console.log(err));
 
             }
         }
