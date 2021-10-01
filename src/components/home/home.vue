@@ -66,35 +66,42 @@ export default {
     }
   },
 
+
   methods: {
 
-    remove(foto) {
-      
-        if(confirm('Confirma operação?')){
-          this.$http
-          .delete(`v1/fotos/${foto._id}`)
-          .then(() => {
-            let indice = this.fotos.indexOf(foto);
-            this.fotos.splice(indice, 1);
-            this.mensagem = 'Foto removida com sucesso'
-          } , err => {
-              console.log(err)
-              this.mensagem = 'Não foi possivel remover a foto'
-          
+      remove(foto) {
 
-          });
-        }
-     }
-  },
+        // a chave do objeto é o parâmetro usando no endereço do recurso 
 
-  created() {
+        this.resource
+          .delete({id: foto._id})
+          .then(
+            () => {
+              let indice = this.fotos.indexOf(foto);
+              this.fotos.splice(indice, 1);
+              this.mensagem = 'Foto removida com sucesso'
+            }, 
+            err => {
+              this.mensagem = 'Não foi possível remover a foto';
+              console.log(err);
+            }
+          )
+      }
 
-    this.$http.get('v1/fotos')
-      .then(res => res.json())
-      .then(fotos => this.fotos = fotos, err => console.log("errooooooooooooo"));
-     },
-}
+    },
 
+    created() {
+
+      // parametrizando o endereço
+
+      this.resource = this.$resource('v1/fotos{/id}');
+      this.resource
+        .query()
+        .then(res => res.json())
+        .then(fotos => this.fotos = fotos, err => console.log(err));
+    }
+  }
+// código posterior omitido 
 </script>
 <style>
   
