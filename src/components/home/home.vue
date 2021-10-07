@@ -13,12 +13,18 @@
         <meu-painel :titulo="foto.titulo" >
 
             <imagem-responsiva v-meu-transform:scale.animate='1.2' :url="foto.url" :titulo="foto.titulo"/>
+            
+            <router-link :to="{name: 'altera', params: { id: foto._id} }">
+                <meu-botao tipo="button" rotulo="ALTERAR" /> 
+                
+            </router-link>
+
           <meu-botao 
           tipo="button" 
           rotulo="Remover" 
           @botaoAtivado="remove(foto)"
           :confirmacao="false"
-          estilo="padrao"
+          estilo="perigo"
           />
 
         </meu-painel>   
@@ -33,6 +39,7 @@
 import painel from '../shared/painel/painel.vue';
 import imagemresponsiva from '../shared/painel/imagem-responsiva/imagemresponsiva.vue';
 import Botao from '../shared/botao/botao.vue';
+import FotoService from '../../directives/domain/foto/FotoService'
 export default {
 
   components:{
@@ -69,6 +76,7 @@ export default {
 
   methods: {
 
+<<<<<<< HEAD
       remove(foto) {
 
         // a chave do objeto é o parâmetro usando no endereço do recurso 
@@ -87,10 +95,39 @@ export default {
             }
           )
       }
+=======
+          remove(foto) {
+
+            this.service
+              .apaga(foto._id)
+              .then(
+                () => {
+                 let indice = this.fotos.indexOf(foto);
+                  this.fotos.splice(indice, 1);
+                  this.mensagem = 'Foto removida com sucesso'
+                }, 
+                err => {
+                  this.mensagem = 'Não foi possível remover a foto';
+                  console.log(err);
+          }
+        )
+    }
+  },
+>>>>>>> bb76b331b697efebd8c230502265b83f2018b93c
 
     },
 
+<<<<<<< HEAD
     created() {
+=======
+    // criando uma instância do nosso serviço que depende de $resource
+    this.service = new FotoService(this.$resource);
+    this.service
+      .lista()
+      .then(fotos => this.fotos = fotos, err =>  this.mensagem = err.message);
+  },
+}
+>>>>>>> bb76b331b697efebd8c230502265b83f2018b93c
 
       // parametrizando o endereço
 
