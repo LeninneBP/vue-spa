@@ -76,7 +76,6 @@ export default {
 
   methods: {
 
-<<<<<<< HEAD
       remove(foto) {
 
         // a chave do objeto é o parâmetro usando no endereço do recurso 
@@ -92,42 +91,12 @@ export default {
             err => {
               this.mensagem = 'Não foi possível remover a foto';
               console.log(err);
-            }
-          )
+            });
       }
-=======
-          remove(foto) {
-
-            this.service
-              .apaga(foto._id)
-              .then(
-                () => {
-                 let indice = this.fotos.indexOf(foto);
-                  this.fotos.splice(indice, 1);
-                  this.mensagem = 'Foto removida com sucesso'
-                }, 
-                err => {
-                  this.mensagem = err.message;
-                  
-          }
-        )
-    }
-  },
->>>>>>> bb76b331b697efebd8c230502265b83f2018b93c
 
     },
 
-<<<<<<< HEAD
     created() {
-=======
-    // criando uma instância do nosso serviço que depende de $resource
-    this.service = new FotoService(this.$resource);
-    this.service
-      .lista()
-      .then(fotos => this.fotos = fotos, err =>  this.mensagem = err.message )
-      }
-}
->>>>>>> bb76b331b697efebd8c230502265b83f2018b93c
 
       // parametrizando o endereço
 

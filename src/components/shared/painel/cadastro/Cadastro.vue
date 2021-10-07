@@ -62,13 +62,21 @@ export default {
     methods: {
 
         grava() {
+           this.$validator
+           .validateAll()
+           .then(sucess => {
+             
+             if(sucess) {
+                  this.service
+                .cadastra(this.foto)
+                .then(() =>{ 
+                if(this.id)  this.$router.push({ name: 'home'});
+                this.foto = new Foto();
+                }, err => console.log(err));
+             }
+
+           });
            
-           this.service
-            .cadastra(this.foto)
-            .then(() =>{ 
-             if(this.id)  this.$router.push({ name: 'home'});
-            this.foto = new Foto();
-            }, err => console.log(err));
             
         
         }

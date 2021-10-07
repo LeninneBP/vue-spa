@@ -1,31 +1,9 @@
-<<<<<<< HEAD
-export default class FotoService{
-
-    constructor(resource){
-=======
 export default class FotoService {
     constructor(resource) {
->>>>>>> bb76b331b697efebd8c230502265b83f2018b93c
 
         this._resource = resource('v1/fotos{/id}');
     }
 
-<<<<<<< HEAD
-    lista(){
-
-
-    }
-
-    cadastra(foto){
-
-
-    }
-
-    apaga(id){
-
-
-    }
-=======
     lista() {
         return this._resource
             .query()
@@ -65,5 +43,4 @@ export default class FotoService {
             .get({ id })
             .then(res =>  res.json());
     }           
->>>>>>> bb76b331b697efebd8c230502265b83f2018b93c
 }
