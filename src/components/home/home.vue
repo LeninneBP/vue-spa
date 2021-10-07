@@ -98,10 +98,9 @@ export default {
 
     // criando uma instância do nosso serviço que depende de $resource
     this.service = new FotoService(this.$resource);
-
     this.service
       .lista()
-      .then(fotos => this.fotos = fotos, err => console.log(err));
+      .then(fotos => this.fotos = fotos, err =>  this.mensagem = err.message);
   },
 }
 
