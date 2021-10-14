@@ -50,27 +50,9 @@ export default{
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 
-    $cor: firebrick;    
-    
-    .botao {
-        display: inline-block;
-        padding: 10px;
-        border-radius: 3px;
-        margin: 10px;
-        font-size: 1.2em;
-    }
-
-    .botao-perigo {
-        background: $cor;
-        color: white;
-    }
-
-    .botao-padrao {
-        background: darkcyan;
-        color: white;
-    }
+    @import './botao.scss';
 
 </style>
 
