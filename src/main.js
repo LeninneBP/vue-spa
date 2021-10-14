@@ -6,12 +6,15 @@ import {routes} from './routes';
 import './directives/Transform';
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
-import  'bootstrap/dist/css/bootstrap.css';
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
 Vue.use(VueRouter)
 
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 const router = new VueRouter({ 
   routes ,
