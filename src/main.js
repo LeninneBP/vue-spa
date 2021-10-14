@@ -9,8 +9,7 @@ import msg from './pt_BR';
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import './assets/css/teste.css'
 import './assets/js/teste'
-import 'bootstrap/dist/js/bootstrap.js'
-import 'jquery/dist/jquery.js'
+
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
