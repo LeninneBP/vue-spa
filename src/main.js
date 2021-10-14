@@ -7,12 +7,11 @@ import './directives/Transform';
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
-
+import './assets/css/teste.css'
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
 Vue.use(VueRouter)
-
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
